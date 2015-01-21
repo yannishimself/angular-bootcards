@@ -1,6 +1,9 @@
 {
   "name": "angular-bootcards",
   "version": "0.0.1",
+  "keywords": [
+    "angular", "bootstrap", "bootcards"
+  ],
   "dependencies": {
   },
   "devDependencies": {

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "angular-bootcards",
   "keywords": [
-    "angular"
+    "angular", "bootstrap", "bootcards"
   ],
   "homepage": "https://github.com/jonniespratley/angular-bootcards",
   "bugs": "https://github.com/jonniespratley/angular-bootcards/issues",
@@ -32,18 +32,16 @@
     "grunt-contrib-less": "~0.7.0",
     "connect-livereload": "~0.3.0",
     "grunt-open": "~0.2.2",
-    "grunt-karma": "~0.6.2",
+    "grunt-karma": "^0.10.1",
     "grunt-ngmin": "0.0.3",
     "grunt-bump": "0.0.11",
     "matchdep": "~0.1.2",
-    "karma-script-launcher": "~0.1.0",
-    "karma-chrome-launcher": "~0.1.0",
-    "karma-firefox-launcher": "~0.1.0",
-    "karma-html2js-preprocessor": "~0.1.0",
-    "karma-jasmine": "~0.1.3",
-    "karma-requirejs": "~0.1.0",
-    "karma-coffee-preprocessor": "~0.1.0",
-    "karma-phantomjs-launcher": "~0.1.0",
-    "karma": "~0.10.2"
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-coverage": "^0.2.7",
+    "karma-jasmine": "^0.3.5",
+    "karma-ng-scenario": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "load-grunt-tasks": "^2.0.0"
   }
 }
