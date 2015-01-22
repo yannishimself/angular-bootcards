@@ -2,6 +2,10 @@
   "name": "angular-bootcards",
   "version": "0.0.1",
   "description": "angular-bootcards",
+  "scripts": {
+    "test": "grunt",
+    "start": "grunt serve"
+  },
   "keywords": [
     "angular",
     "bootstrap",
