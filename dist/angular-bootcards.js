@@ -30,6 +30,45 @@ angular.module('bootcards', []).directive('myDirective', function () {
     },
     templateUrl: 'bootcards-card/bootcards-card.tmpl.html'
   };
+});angular.module('bootcards').directive('bootcardsChart', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      title: '@',
+      ngModel: '='
+    },
+    link: function (scope, element, attrs) {
+      console.log('card linked');
+    },
+    templateUrl: 'bootcards-chart/bootcards-chart.tmpl.html'
+  };
+});angular.module('bootcards').directive('bootcardsFile', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      title: '@',
+      ngModel: '='
+    },
+    link: function (scope, element, attrs) {
+      console.log('card linked');
+    },
+    templateUrl: 'bootcards-file/bootcards-file.tmpl.html'
+  };
+});angular.module('bootcards').directive('bootcardsForm', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      title: '@',
+      ngModel: '='
+    },
+    link: function (scope, element, attrs) {
+      console.log('card linked');
+    },
+    templateUrl: 'bootcards-form/bootcards-form.tmpl.html'
+  };
 });angular.module('bootcards').directive('bootcardsList', function () {
   return {
     restrict: 'E',
@@ -39,6 +78,45 @@ angular.module('bootcards', []).directive('myDirective', function () {
       console.log('card linked');
     },
     templateUrl: 'bootcards-list/bootcards-list.tmpl.html'
+  };
+});angular.module('bootcards').directive('bootcardsMedia', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      title: '@',
+      ngModel: '='
+    },
+    link: function (scope, element, attrs) {
+      console.log('card linked');
+    },
+    templateUrl: 'bootcards-media/bootcards-media.tmpl.html'
+  };
+});angular.module('bootcards').directive('bootcardsSummary', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      title: '@',
+      ngModel: '='
+    },
+    link: function (scope, element, attrs) {
+      console.log('card linked');
+    },
+    templateUrl: 'bootcards-summary/bootcards-summary.tmpl.html'
+  };
+});angular.module('bootcards').directive('bootcardsTable', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      title: '@',
+      ngModel: '='
+    },
+    link: function (scope, element, attrs) {
+      console.log('table linked');
+    },
+    templateUrl: 'bootcards-table/bootcards-table.tmpl.html'
   };
 });
 angular.module('bootcards').run(['$templateCache', function($templateCache) {
