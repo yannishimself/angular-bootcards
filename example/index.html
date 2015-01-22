@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="example">
+<html >
 
 <head>
   <meta charset="utf-8" />
@@ -11,24 +11,29 @@
   <!-- Important: you'll only need one of the Bootcards CSS files below for every platform -->
 
   <!-- Bootcards CSS for iOS: -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-ios.min.css" />
+  <link rel="stylesheet" href="/bootcards/dist/css/bootcards-ios.min.css" />
 
   <!-- Bootcards CSS for Android: -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-android.min.css" />
+	<link rel="stylesheet" href="/bootcards/dist/css/bootcards-android.min.css" />
 
   <!-- Bootcards CSS for desktop: -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css" />
+	<link rel="stylesheet" href="/bootcards/dist/css/bootcards-desktop.min.css" />
 
-  <!-- Bootstrap and Bootcards JS -->
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
-  <script data-require="jquery@2.1.3" data-semver="2.1.3" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script data-require="angular.js@1.3.x" src="https://code.angularjs.org/1.3.10/angular.js" data-semver="1.3.10"></script>
-  <script src="app.js"></script>
+  <!-- 3rd party libs - Bootstrap and Bootcards JS -->
+	<script src="/jquery/dist/jquery.js"></script>
+	<script src="/angular/angular.js"></script>
+	<script src="/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="/bootcards/dist/js/bootcards.js"></script>
+
+	<!-- Plugin -->
+	<script src="/angular-bootcards.min.js"></script>
+
+	<!-- Demo js -->
+	<script src="app.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body ng-controller="MainCtrl">
+<body ng-app="example" ng-controller="MainCtrl">
 
 <h3>List</h3>
 <bootcards-list ng-model="myListModel"></bootcards-list>

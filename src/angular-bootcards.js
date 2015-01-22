@@ -1,22 +1,6 @@
 'use strict';
 
-var angularBootcards = angular.module('jonniespratley.angularBootcards', []);
-
-angularBootcards.directive('bootcardsList', function () {
-	return {
-		restrict: 'EC',
-		transclude: true,
-		scope: {
-			ngModel: '='
-		},
-		link: function (scope, element, attrs, tabsCtrl) {
-			console.log('card linked');
-		},
-		templateUrl: './bootcards-list.tmpl.html'
-	};
-});
-
-angularBootcards.directive('myDirective', function () {
+angular.module('bootcards', []).directive('myDirective', function () {
 
 	return {
 		restrict: 'EAC',
