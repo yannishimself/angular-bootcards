@@ -1,13 +1,12 @@
-# angular-bootcards
-This is an AngularJS wrapper for the Bootcards UI framework.
+angular-bootcards
+=================
 
+[![Build Status](https://travis-ci.org/jonniespratley/angular-bootcards.svg)](https://travis-ci.org/jonniespratley/angular-bootcards) This is an AngularJS wrapper for the Bootcards UI framework.
 
-## Getting Started
+Getting Started
+---------------
 
-Download the [production version][min] or the [development version][max].
-
-[min]: https://raw.github.com/jonniespratley/angular-bootcards/master/dist/angular-bootcards.min.js
-[max]: https://raw.github.com/jonniespratley/angular-bootcards/master/dist/angular-bootcards.js
+Download the [production version](https://raw.github.com/jonniespratley/angular-bootcards/master/dist/angular-bootcards.min.js) or the [development version](https://raw.github.com/jonniespratley/angular-bootcards/master/dist/angular-bootcards.js).
 
 In your web page:
 
@@ -24,9 +23,12 @@ var app = angular.module('example', [
 ]);
 ```
 
-## Documentation
-_(Coming soon)_
+Documentation
+-------------
 
-## Examples
-_(Coming soon)_
+*(Coming soon)*
 
+Examples
+--------
+
+*(Coming soon)*
