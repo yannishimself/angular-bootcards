@@ -4,17 +4,17 @@ angular.module('bootcards').run(['$templateCache', function($templateCache) {
   $templateCache.put('bootcards-card/bootcards-card.tmpl.html',
     "<div class=\"panel panel-default\">\n" +
     "\t<div class=\"panel-heading clearfix\">\n" +
-    "\t\t<h3 class=\"panel-title pull-left\">Card Title</h3>\n" +
-    "\t\t<a class=\"btn btn-default pull-right\" href=\"#\">\n" +
+    "\t\t<h3 class=\"panel-title pull-left\" ng-bind=\"title\"></h3>\n" +
+    "\t\t<!--a class=\"btn btn-default pull-right\" href=\"#\">\n" +
     "\t\t\t<i class=\"fa fa-check\"></i>\n" +
     "\t\t\tButton\n" +
-    "\t\t</a>\n" +
+    "\t\t</a-->\n" +
     "\t</div>\n" +
-    "\t<div class=\"panel-body\">\n" +
-    "\t\t<p>Card content...</p>\n" +
+    "\t<div class=\"panel-body\" ng-transclude>\n" +
+    "\n" +
     "\t</div>\n" +
     "\t<div class=\"panel-footer\">\n" +
-    "\t\t<small>Card footer...</small>\n" +
+    "\t\t<small>Footer</small>\n" +
     "\t</div>\n" +
     "</div>"
   );

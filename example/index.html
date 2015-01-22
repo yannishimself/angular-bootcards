@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
-  <meta charset="utf-8" />
-  <title>AngularJS Bootcards Example</title>
-  <script>
-    document.write('<base href="' + document.location + '" />');
-  </script>
+	<meta charset="utf-8"/>
+	<title>AngularJS Bootcards Example</title>
+	<script>
+		document.write('<base href="' + document.location + '" />');
+	</script>
 
-  <!-- Important: you'll only need one of the Bootcards CSS files below for every platform -->
+	<!-- Important: you'll only need one of the Bootcards CSS files below for every platform -->
 
-  <!-- Bootcards CSS for iOS: -->
-  <link rel="stylesheet" href="/bootcards/dist/css/bootcards-ios.min.css" />
+	<!-- Bootcards CSS for iOS:
+	<link rel="stylesheet" href="/bootcards/dist/css/bootcards-ios.min.css"/>
+	-->
+	<!-- Bootcards CSS for Android:
+	<link rel="stylesheet" href="/bootcards/dist/css/bootcards-android.min.css"/>
+	-->
 
-  <!-- Bootcards CSS for Android: -->
-	<link rel="stylesheet" href="/bootcards/dist/css/bootcards-android.min.css" />
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="/bootcards/dist/css/bootcards-desktop.min.css"/>
 
-  <!-- Bootcards CSS for desktop: -->
-	<link rel="stylesheet" href="/bootcards/dist/css/bootcards-desktop.min.css" />
-
-  <!-- 3rd party libs - Bootstrap and Bootcards JS -->
+	<!-- 3rd party libs - Bootstrap and Bootcards JS -->
 	<script src="/jquery/dist/jquery.js"></script>
 	<script src="/angular/angular.js"></script>
 	<script src="/bootstrap/dist/js/bootstrap.js"></script>
@@ -30,13 +31,27 @@
 
 	<!-- Demo js -->
 	<script src="app.js"></script>
-  <link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="style.css"/>
 </head>
 
 <body ng-app="example" ng-controller="MainCtrl">
 
-<h3>List</h3>
-<bootcards-list ng-model="myListModel"></bootcards-list>
+<bootcards-card title="List View">
+	<bootcards-list ng-model="myListModel"></bootcards-list>
+</bootcards-card>
+<bootcards-card title="Summary View">
+	<bootcards-summary></bootcards-summary>
+</bootcards-card>
+<bootcards-card title="Form View">
+	<bootcards-form></bootcards-form>
+</bootcards-card>
+<bootcards-card title="Media View">
+	<bootcards-media></bootcards-media>
+</bootcards-card>
+<bootcards-card title="Table View">
+	<bootcards-table></bootcards-table>
+</bootcards-card>
+
 
 </body>
 
