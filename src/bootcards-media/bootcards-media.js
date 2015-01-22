@@ -7,7 +7,7 @@ angular.module('bootcards').directive('bootcardsMedia', function () {
 			ngModel: '='
 		},
 		link: function (scope, element, attrs) {
-			console.log('card linked');
+			console.log('media linked');
 		},
 		templateUrl: 'bootcards-media/bootcards-media.tmpl.html'
 	};
