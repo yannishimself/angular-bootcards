@@ -7,7 +7,7 @@ angular.module('bootcards').directive('bootcardsForm', function () {
 			ngModel: '='
 		},
 		link: function (scope, element, attrs) {
-			console.log('card linked');
+			console.log('form linked');
 		},
 		templateUrl: 'bootcards-form/bootcards-form.tmpl.html'
 	};

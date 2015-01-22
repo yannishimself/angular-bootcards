@@ -6,7 +6,7 @@ angular.module('bootcards').directive('bootcardsList', function () {
 			ngModel: '='
 		},
 		link: function (scope, element, attrs) {
-			console.log('card linked');
+			console.log('list linked');
 		},
 		templateUrl: 'bootcards-list/bootcards-list.tmpl.html'
 	};
