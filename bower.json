@@ -13,5 +13,23 @@
     "angular": "latest",
     "angular-mocks": "latest",
     "jquery": "latest"
-  }
+  },
+  "homepage": "https://github.com/jonniespratley/angular-bootcards",
+  "authors": [
+    "Jonnie Spratley <jonniespratley@gmail.com>"
+  ],
+  "description": "AngularJS directives for Bootcards UI framework.",
+  "main": "dist/angular-bootcards.min.js",
+  "license": "MIT",
+  "ignore": [
+		".*",
+		".c9",
+		"src",
+		"test",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
