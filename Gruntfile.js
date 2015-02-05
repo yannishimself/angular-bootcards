@@ -8,7 +8,8 @@ module.exports = function (grunt) {
 		livereload: 35729,
 		app: 'example',
 		src: 'src',
-		dist: 'dist'
+		dist: 'dist',
+		docs: 'docs'
 	};
 
 	// Livereload setup
@@ -96,6 +97,18 @@ module.exports = function (grunt) {
 							mountFolder(connect, yoConfig.dist),
 							mountFolder(connect, '.tmp'),
 							mountFolder(connect, yoConfig.src)
+						];
+					}
+				}
+			},
+			docs: {
+				options: {
+					middleware: function (connect) {
+						return [
+						lrSnippet,
+						mountFolder(connect, 'bower_components'),
+						mountFolder(connect, yoConfig.docs),
+						mountFolder(connect, '.tmp')
 						];
 					}
 				}
@@ -195,12 +208,50 @@ module.exports = function (grunt) {
 					}
 				}
 			}
+		},
+		ngdocs: {
+			options: {
+				dest: 'docs',
+				scripts: [
+					'//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
+					'//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular.min.js',
+					'//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular-animate.min.js',
+					'//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js',
+					'//cdnjs.cloudflare.com/ajax/libs/bootcards/1.1.0/js/bootcards.min.js',
+					'dist/angular-bootcards.js'
+				],
+				styles: [
+				'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css',
+				'https://cdnjs.cloudflare.com/ajax/libs/bootcards/1.1.0/css/bootcards-desktop.min.css'
+				],
+				html5Mode: false,
+				startPage: '/api',
+				title: "Angular Bootcards",
+				titleLink: "/api",
+				analytics: {
+					account: 'UA-08150815-0',
+					domainName: 'my-domain.com'
+				}
+			},/*
+			tutorial: {
+				src: ['content/tutorial/*.ngdoc'],
+				title: 'Tutorial'
+			},*/
+			api: {
+				src: ['src/**/*.js', '!src/**/*.spec.js'],
+				title: 'API Documentation'
+			}
 		}
 	});
 
 	grunt.registerTask('serve', [
-		'connect',
+		'connect:livereload',
 		'watch'
+	]);
+	grunt.registerTask('docs', [
+	'ngdocs',
+	'connect:docs',
+	'watch'
 	]);
 
 	grunt.registerTask('test', [
