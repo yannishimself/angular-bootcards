@@ -58,7 +58,7 @@ module.exports = function (grunt) {
 				tasks: ['jshint:gruntfile']
 			},
 			html: {
-				files: ['<%= yo.src %>/{,**/}*.tmpl.html'],
+				files: ['<%= yo.src %>/{,**/}*.html'],
 				tasks: ['build']
 			},
 			less: {
