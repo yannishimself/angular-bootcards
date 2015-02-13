@@ -25,7 +25,7 @@ angular.module('bootcards').run(['$templateCache', function($templateCache) {
     "\t<div class=\"panel-heading\">\n" +
     "\t\t<h3 class=\"panel-title\">Chart Card Heading</h3>\n" +
     "\t</div>\n" +
-    "\t<div class=\"bootcards-chart-canvas\"></div>\n" +
+    "\t<div class=\"bootcards-chart-canvas\" id=\"barChart\"></div>\n" +
     "\t<div class=\"panel-footer\">\n" +
     "\t\t<small>Built with Bootcards - Chart Card</small>\n" +
     "\t</div>\n" +

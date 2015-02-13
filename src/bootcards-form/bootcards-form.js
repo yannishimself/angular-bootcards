@@ -1,3 +1,25 @@
+/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsForm
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-form
+ 	title="Form View" 
+ 	ng-model="myListModel"></bootcards-form>
+ 
+ </file>
+ </example>
+ */
 angular.module('bootcards').directive('bootcardsForm', function () {
 	return {
 		restrict: 'E',

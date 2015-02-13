@@ -1,18 +1,12 @@
 <div class="navbar navbar-default navbar-fixed-bottom">
 	<div class="container">
 		<div class="btn-group">
-			<a href="#" class="btn btn-default active">
-				<i class="fa fa-2x fa-users"></i>
-				Contacts
+
+			<a href="{{item.href}}" ng-repeat="item in ngModel.nav" title="{{item.title}}" class="btn btn-default">
+				<i class="fa fa-{{item.icon}}"></i>
+				{{item.title}}
 			</a>
-			<a href="#" class="btn btn-default">
-				<i class="fa fa-2x fa-building-o"></i>
-				Companies
-			</a>
-			<a href="#" class="btn btn-default">
-				<i class="fa fa-2x fa-gears"></i>
-				Settings
-			</a>
+
 		</div>
 		<div class="bootcards-desktop-footer clearfix">
 			<p class="pull-left">Text for desktop footer goes here</p>

@@ -1,6 +1,6 @@
 /**
  * angular-bootcards
- * @version v0.0.1 - 2015-01-30
+ * @version v0.0.1 - 2015-02-10
  * @link https://github.com/jonniespratley/angular-bootcards
  * @author Jonnie Spratley <jonniespratley@me.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -17,7 +17,27 @@ angular.module('bootcards', []).directive('myDirective', function () {
       };
     }
   };
-});angular.module('bootcards').directive('bootcardsCard', function () {
+});/**
+* @ngdoc directive
+* @name bootcards.directive:bootcardsCard
+* @element div
+* @function
+*
+* @description
+* This is the base card directive
+*
+* **Note:** ie<9 needs pollyfill for window.getComputedStyle
+*
+* @example
+<example module="bootcards">
+<file name="index.html">
+<bootcards-card title="List View">
+<bootcards-list ng-model="myListModel"></bootcards-list>
+</bootcards-card>
+</file>
+</example>
+*/
+angular.module('bootcards').directive('bootcardsCard', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -30,7 +50,27 @@ angular.module('bootcards', []).directive('myDirective', function () {
     },
     templateUrl: 'bootcards-card/bootcards-card.tmpl.html'
   };
-});angular.module('bootcards').directive('bootcardsChart', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsChart
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ <bootcards-card title="List View">
+ <bootcards-list ng-model="myListModel"></bootcards-list>
+ </bootcards-card>
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsChart', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -41,6 +81,32 @@ angular.module('bootcards', []).directive('myDirective', function () {
     link: function (scope, element, attrs) {
       console.log('chart linked');
       var drawCharts = function () {
+        $('#barChart').empty();
+        Morris.Bar({
+          element: 'barChart',
+          data: [
+            {
+              person: 'Guy Bardsley',
+              sales: 550
+            },
+            {
+              person: 'Adam Callahan',
+              sales: 1500
+            },
+            {
+              person: 'Arlo Geist',
+              sales: 3750
+            },
+            {
+              person: 'Sheila Hutchins',
+              sales: 3500
+            }
+          ],
+          xkey: 'person',
+          ykeys: ['sales'],
+          labels: ['Sales'],
+          hideHover: 'auto'
+        });
       };
       $(document).ready(function () {
         drawCharts();
@@ -51,7 +117,29 @@ angular.module('bootcards', []).directive('myDirective', function () {
     },
     templateUrl: 'bootcards-chart/bootcards-chart.tmpl.html'
   };
-});angular.module('bootcards').directive('bootcardsFile', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsFile
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-file
+ 	title="File View" 
+ 	ng-model="myListModel"></bootcards-file>
+ 
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsFile', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -64,20 +152,80 @@ angular.module('bootcards', []).directive('myDirective', function () {
     },
     templateUrl: 'bootcards-file/bootcards-file.tmpl.html'
   };
-});angular.module('bootcards').directive('bootcardsForm', function () {
+});angular.module('bootcards').directive('bcFooterbar', function () {
   return {
     restrict: 'E',
     transclude: true,
+    replace: true,
     scope: {
       title: '@',
       ngModel: '='
     },
     link: function (scope, element, attrs) {
+      console.log('cbFooterbar linked');
+    },
+    templateUrl: 'bootcards-footerbar/bootcards-footerbar.html'
+  };
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsForm
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-form
+ 	title="Form View" 
+ 	ng-model="myListModel"></bootcards-form>
+ 
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsForm', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    replace: true,
+    scope: {
+      title: '@',
+      schema: '@',
+      ngModel: '='
+    },
+    link: function (scope, element, attrs) {
       console.log('form linked');
     },
-    templateUrl: 'bootcards-form/bootcards-form.tmpl.html'
+    templateUrl: 'bootcards-form/bootcards-form.html'
   };
-});angular.module('bootcards').directive('bootcardsList', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsList
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-list
+ 	title="List View" 
+ 	ng-model="myListModel"></bootcards-list>
+ 
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsList', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -87,7 +235,29 @@ angular.module('bootcards', []).directive('myDirective', function () {
     },
     templateUrl: 'bootcards-list/bootcards-list.tmpl.html'
   };
-});angular.module('bootcards').directive('bootcardsMedia', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsMedia
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-media
+ 	title="Media View" 
+ 	ng-model="myListModel"></bootcards-media>
+ 
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsMedia', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -99,6 +269,34 @@ angular.module('bootcards', []).directive('myDirective', function () {
       console.log('media linked');
     },
     templateUrl: 'bootcards-media/bootcards-media.tmpl.html'
+  };
+});angular.module('bootcards').directive('bcNavbar', function () {
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      title: '@',
+      ngModel: '='
+    },
+    link: function ($scope, $element, $attrs) {
+      console.log('bcNavbar linked');
+      console.log($scope);
+    },
+    templateUrl: 'bootcards-navbar/bootcards-navbar.html'
+  };
+});angular.module('bootcards').directive('bcSidebar', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    replace: true,
+    scope: {
+      title: '@',
+      ngModel: '='
+    },
+    link: function (scope, element, attrs) {
+      console.log('bcSidebar linked');
+    },
+    templateUrl: 'bootcards-sidebar/bootcards-sidebar.html'
   };
 });angular.module('bootcards').directive('bootcardsSummary', function () {
   return {
@@ -154,7 +352,7 @@ angular.module('bootcards').run(['$templateCache', function($templateCache) {
     "\t<div class=\"panel-heading\">\n" +
     "\t\t<h3 class=\"panel-title\">Chart Card Heading</h3>\n" +
     "\t</div>\n" +
-    "\t<div class=\"bootcards-chart-canvas\"></div>\n" +
+    "\t<div class=\"bootcards-chart-canvas\" id=\"barChart\"></div>\n" +
     "\t<div class=\"panel-footer\">\n" +
     "\t\t<small>Built with Bootcards - Chart Card</small>\n" +
     "\t</div>\n" +
@@ -213,54 +411,6 @@ angular.module('bootcards').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('bootcards-form/bootcards-form.tmpl.html',
-    "<div class=\"panel panel-default\">\n" +
-    "\t<div class=\"panel-heading clearfix\">\n" +
-    "\t\t<h3 class=\"panel-title pull-left\">Form Card Title</h3>\n" +
-    "\t\t<div class=\"btn-group pull-right\">\n" +
-    "\t\t\t<button class=\"btn btn-danger\">\n" +
-    "\t\t\t\t<i class=\"fa fa-times\"></i>\n" +
-    "\t\t\t\tCancel\n" +
-    "\t\t\t</button>\n" +
-    "\t\t\t<button class=\"btn btn-success\">\n" +
-    "\t\t\t\t<i class=\"fa fa-check\"></i>\n" +
-    "\t\t\t\tSave\n" +
-    "\t\t\t</button>\n" +
-    "\t\t</div>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"modal-body\">\n" +
-    "\t\t<form class=\"form-horizontal\">\n" +
-    "\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t<label class=\"col-xs-3 control-label\">Name</label>\n" +
-    "\t\t\t\t<div class=\"col-xs-9\">\n" +
-    "\t\t\t\t\t<input type=\"text\" class=\"form-control\" value=\"John Smith\">\n" +
-    "\t\t\t\t</div>\n" +
-    "\t\t\t</div>\n" +
-    "\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t<label class=\"col-xs-3 control-label\">Occupation</label>\n" +
-    "\t\t\t\t<div class=\"col-xs-9\">\n" +
-    "\t\t\t\t\t<select class=\"form-control\">\n" +
-    "\t\t\t\t\t\t<option>Designer</option>\n" +
-    "\t\t\t\t\t\t<option selected>Developer</option>\n" +
-    "\t\t\t\t\t\t<option>Salesman</option>\n" +
-    "\t\t\t\t\t</select>\n" +
-    "\t\t\t\t</div>\n" +
-    "\t\t\t</div>\n" +
-    "\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t<label class=\"col-xs-3 control-label\">Description</label>\n" +
-    "\t\t\t\t<div class=\"col-xs-9\">\n" +
-    "\t\t\t\t\t<textarea class=\"form-control\" rows=\"6\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris tellus, vehicula ut tellus id, suscipit dapibus tortor. Integer viverra turpis ac fringilla hendrerit. Sed faucibus posuere felis et pellentesque. Cras varius tortor vitae molestie tempor. Proin ut viverra elit, ac gravida tortor.</textarea>\n" +
-    "\t\t\t\t</div>\n" +
-    "\t\t\t</div>\n" +
-    "\t\t</form>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"panel-footer\">\n" +
-    "\t\t<small>Built with Bootcards - Form Card</small>\n" +
-    "\t</div>\n" +
-    "</div>"
-  );
-
-
   $templateCache.put('bootcards-list/bootcards-list.tmpl.html',
     "<div class=\"bootcards-list\">\n" +
     "\t<div class=\"panel panel-default\">\n" +
@@ -283,29 +433,38 @@ angular.module('bootcards').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('bootcards-media/bootcards-media.tmpl.html',
-    "<div class=\"panel-body\">\n" +
-    "\tMedia card description lorem ipsum dolor est compendium\n" +
-    "</div>\n" +
-    "<img src=\"http://www.teamstudio.com/Portals/218295/images/istock_000001242290small.jpg\" class=\"img-responsive\"/>\n" +
-    "<div class=\"panel-footer\">\n" +
-    "\t<div class=\"btn-group btn-group-justified\">\n" +
-    "\t\t<div class=\"btn-group\">\n" +
-    "\t\t\t<button class=\"btn btn-default\">\n" +
-    "\t\t\t\t<i class=\"fa fa-arrow-down\"></i>\n" +
-    "\t\t\t\tDownload\n" +
-    "\t\t\t</button>\n" +
-    "\t\t</div>\n" +
-    "\t\t<div class=\"btn-group\">\n" +
-    "\t\t\t<button class=\"btn btn-default\">\n" +
-    "\t\t\t\t<i class=\"fa fa-star\"></i>\n" +
-    "\t\t\t\tFavorite\n" +
-    "\t\t\t</button>\n" +
-    "\t\t</div>\n" +
-    "\t\t<div class=\"btn-group\">\n" +
-    "\t\t\t<button class=\"btn btn-default\">\n" +
-    "\t\t\t\t<i class=\"fa fa-envelope\"></i>\n" +
-    "\t\t\t\tEmail\n" +
-    "\t\t\t</button>\n" +
+    "<div class=\"panel panel-default\">\n" +
+    "\t<div class=\"panel-heading clearfix\">\n" +
+    "\t\t<h3 class=\"panel-title pull-left\" ng-bind=\"title\"></h3>\n" +
+    "\t\t<!--a class=\"btn btn-default pull-right\" href=\"#\">\n" +
+    "\t\t<i class=\"fa fa-check\"></i>\n" +
+    "\t\tButton\n" +
+    "\t</a-->\n" +
+    "\t</div>\n" +
+    "\t<div class=\"panel-body\">\n" +
+    "\t\tMedia card description lorem ipsum dolor est compendium\n" +
+    "\t</div>\n" +
+    "\t<img src=\"http://www.teamstudio.com/Portals/218295/images/istock_000001242290small.jpg\" class=\"img-responsive\"/>\n" +
+    "\t<div class=\"panel-footer\">\n" +
+    "\t\t<div class=\"btn-group btn-group-justified\">\n" +
+    "\t\t\t<div class=\"btn-group\">\n" +
+    "\t\t\t\t<button class=\"btn btn-default\">\n" +
+    "\t\t\t\t\t<i class=\"fa fa-arrow-down\"></i>\n" +
+    "\t\t\t\t\tDownload\n" +
+    "\t\t\t\t</button>\n" +
+    "\t\t\t</div>\n" +
+    "\t\t\t<div class=\"btn-group\">\n" +
+    "\t\t\t\t<button class=\"btn btn-default\">\n" +
+    "\t\t\t\t\t<i class=\"fa fa-star\"></i>\n" +
+    "\t\t\t\t\tFavorite\n" +
+    "\t\t\t\t</button>\n" +
+    "\t\t\t</div>\n" +
+    "\t\t\t<div class=\"btn-group\">\n" +
+    "\t\t\t\t<button class=\"btn btn-default\">\n" +
+    "\t\t\t\t\t<i class=\"fa fa-envelope\"></i>\n" +
+    "\t\t\t\t\tEmail\n" +
+    "\t\t\t\t</button>\n" +
+    "\t\t\t</div>\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
     "</div>\n"
@@ -313,53 +472,81 @@ angular.module('bootcards').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('bootcards-summary/bootcards-summary.tmpl.html',
-    "<div class=\"row\">\n" +
-    "\t<div class=\"col-xs-6 col-sm-4\">\n" +
-    "\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
-    "\t\t\t<i class=\"fa fa-3x fa-users\"></i>\n" +
-    "\t\t\t<h4>Contacts <span class=\"label label-info\">432</span></h4>\n" +
-    "\t\t</a>\n" +
+    "<div class=\"panel panel-default\">\n" +
+    "\t<div class=\"panel-heading clearfix\">\n" +
+    "\t\t<h3 class=\"panel-title pull-left\" ng-bind=\"title\"></h3>\n" +
+    "\t\t<!--a class=\"btn btn-default pull-right\" href=\"#\">\n" +
+    "\t\t<i class=\"fa fa-check\"></i>\n" +
+    "\t\tButton\n" +
+    "\t</a-->\n" +
+    "</div>\n" +
+    "<div class=\"panel-body\">\n" +
+    "\t<div class=\"row\">\n" +
+    "\t\t<div class=\"col-xs-6 col-sm-4\">\n" +
+    "\t\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
+    "\t\t\t\t<i class=\"fa fa-3x fa-users\"></i>\n" +
+    "\t\t\t\t<h4>Contacts <span class=\"label label-info\">432</span></h4>\n" +
+    "\t\t\t</a>\n" +
+    "\t\t</div>\n" +
+    "\t\t<div class=\"col-xs-6 col-sm-4\">\n" +
+    "\t\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
+    "\t\t\t\t<i class=\"fa fa-3x fa-building-o\"></i>\n" +
+    "\t\t\t\t<h4>Companies <span class=\"label label-info\">98</span></h4>\n" +
+    "\t\t\t</a>\n" +
+    "\t\t</div>\n" +
+    "\t\t<div class=\"col-xs-6 col-sm-4\">\n" +
+    "\t\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
+    "\t\t\t\t<i class=\"fa fa-3x fa-clipboard\"></i>\n" +
+    "\t\t\t\t<h4>Notes <span class=\"label label-danger\">54</span></h4>\n" +
+    "\t\t\t</a>\n" +
+    "\t\t</div>\n" +
+    "\t\t<div class=\"col-xs-6 col-sm-4\">\n" +
+    "\t\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
+    "\t\t\t\t<i class=\"fa fa-3x fa-files-o\"></i>\n" +
+    "\t\t\t\t<h4>Files <span class=\"label label-info\">65</span></h4>\n" +
+    "\t\t\t</a>\n" +
+    "\t\t</div>\n" +
+    "\t\t<div class=\"col-xs-6 col-sm-4\">\n" +
+    "\t\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
+    "\t\t\t\t<i class=\"fa fa-3x fa-check-square-o\"></i>\n" +
+    "\t\t\t\t<h4>Tasks <span class=\"label label-warning\">109</span></h4>\n" +
+    "\t\t\t</a>\n" +
+    "\t\t</div>\n" +
     "\t</div>\n" +
-    "\t<div class=\"col-xs-6 col-sm-4\">\n" +
-    "\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
-    "\t\t\t<i class=\"fa fa-3x fa-building-o\"></i>\n" +
-    "\t\t\t<h4>Companies <span class=\"label label-info\">98</span></h4>\n" +
-    "\t\t</a>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"col-xs-6 col-sm-4\">\n" +
-    "\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
-    "\t\t\t<i class=\"fa fa-3x fa-clipboard\"></i>\n" +
-    "\t\t\t<h4>Notes <span class=\"label label-danger\">54</span></h4>\n" +
-    "\t\t</a>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"col-xs-6 col-sm-4\">\n" +
-    "\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
-    "\t\t\t<i class=\"fa fa-3x fa-files-o\"></i>\n" +
-    "\t\t\t<h4>Files <span class=\"label label-info\">65</span></h4>\n" +
-    "\t\t</a>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"col-xs-6 col-sm-4\">\n" +
-    "\t\t<a class=\"bootcards-summary-item\" href=\"#\">\n" +
-    "\t\t\t<i class=\"fa fa-3x fa-check-square-o\"></i>\n" +
-    "\t\t\t<h4>Tasks <span class=\"label label-warning\">109</span></h4>\n" +
-    "\t\t</a>\n" +
+    "</div>\n" +
+    "\t<div class=\"panel-footer\">\n" +
+    "\t\t<small>Footer</small>\n" +
     "\t</div>\n" +
     "</div>\n"
   );
 
 
   $templateCache.put('bootcards-table/bootcards-table.tmpl.html',
-    "<div class=\"table-responsive\">\n" +
-    "\t<table class=\"table table-hover\">\n" +
-    "\t\t<thead>\n" +
-    "\t\t\t<tr class=\"active\"><th>Name</th><th>Forecast</th><th>Quota</th></tr>\n" +
-    "\t\t</thead>\n" +
-    "\t\t<tbody>\n" +
-    "\t\t\t<tr><td>Guy Bardsley</td><td>2750</td><td>4000</td></tr>\n" +
-    "\t\t\t<tr><td>Adam Callahan</td><td>3300</td><td>4000</td></tr>\n" +
-    "\t\t\t<tr><td><strong>Total</strong></td><td><strong>6050</strong></td><td><strong>8000</strong></td></tr>\n" +
-    "\t\t</tbody>\n" +
-    "\t</table>\n" +
+    "<div class=\"panel panel-default\">\n" +
+    "\t<div class=\"panel-heading clearfix\">\n" +
+    "\t\t<h3 class=\"panel-title pull-left\" ng-bind=\"title\"></h3>\n" +
+    "\t\t<!--a class=\"btn btn-default pull-right\" href=\"#\">\n" +
+    "\t\t<i class=\"fa fa-check\"></i>\n" +
+    "\t\tButton\n" +
+    "\t</a-->\n" +
+    "</div>\n" +
+    "<div class=\"panel-body\">\n" +
+    "\t<div class=\"table-responsive\">\n" +
+    "\t\t<table class=\"table table-hover\">\n" +
+    "\t\t\t<thead>\n" +
+    "\t\t\t\t<tr class=\"active\"><th>Name</th><th>Forecast</th><th>Quota</th></tr>\n" +
+    "\t\t\t</thead>\n" +
+    "\t\t\t<tbody>\n" +
+    "\t\t\t\t<tr><td>Guy Bardsley</td><td>2750</td><td>4000</td></tr>\n" +
+    "\t\t\t\t<tr><td>Adam Callahan</td><td>3300</td><td>4000</td></tr>\n" +
+    "\t\t\t\t<tr><td><strong>Total</strong></td><td><strong>6050</strong></td><td><strong>8000</strong></td></tr>\n" +
+    "\t\t\t</tbody>\n" +
+    "\t\t</table>\n" +
+    "\t</div>\n" +
+    "</div>\n" +
+    "<div class=\"panel-footer\">\n" +
+    "\t<small>Footer</small>\n" +
+    "</div>\n" +
     "</div>\n"
   );
 

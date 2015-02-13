@@ -1,6 +1,6 @@
 /**
  * angular-bootcards
- * @version v0.0.1 - 2015-02-08
+ * @version v0.0.1 - 2015-02-10
  * @link https://github.com/jonniespratley/angular-bootcards
  * @author Jonnie Spratley <jonniespratley@me.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -50,7 +50,27 @@ angular.module('bootcards').directive('bootcardsCard', function () {
     },
     templateUrl: 'bootcards-card/bootcards-card.tmpl.html'
   };
-});angular.module('bootcards').directive('bootcardsChart', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsChart
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+
+ <bootcards-chart title="Chart View" ng-model="myListModel"></bootcards-chart>
+
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsChart', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -61,6 +81,32 @@ angular.module('bootcards').directive('bootcardsCard', function () {
     link: function (scope, element, attrs) {
       console.log('chart linked');
       var drawCharts = function () {
+        $('#barChart').empty();
+        Morris.Bar({
+          element: 'barChart',
+          data: [
+            {
+              person: 'Guy Bardsley',
+              sales: 550
+            },
+            {
+              person: 'Adam Callahan',
+              sales: 1500
+            },
+            {
+              person: 'Arlo Geist',
+              sales: 3750
+            },
+            {
+              person: 'Sheila Hutchins',
+              sales: 3500
+            }
+          ],
+          xkey: 'person',
+          ykeys: ['sales'],
+          labels: ['Sales'],
+          hideHover: 'auto'
+        });
       };
       $(document).ready(function () {
         drawCharts();
@@ -71,7 +117,29 @@ angular.module('bootcards').directive('bootcardsCard', function () {
     },
     templateUrl: 'bootcards-chart/bootcards-chart.tmpl.html'
   };
-});angular.module('bootcards').directive('bootcardsFile', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsFile
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-file
+ 	title="File View" 
+ 	ng-model="myListModel"></bootcards-file>
+ 
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsFile', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -88,21 +156,46 @@ angular.module('bootcards').directive('bootcardsCard', function () {
   return {
     restrict: 'E',
     transclude: true,
+    replace: true,
     scope: {
       title: '@',
       ngModel: '='
     },
     link: function (scope, element, attrs) {
-      console.log('table linked');
+      console.log('cbFooterbar linked');
     },
     templateUrl: 'bootcards-footerbar/bootcards-footerbar.html'
   };
-});angular.module('bootcards').directive('bootcardsForm', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsForm
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-form
+ 	title="Form View" 
+ 	ng-model="myListModel"></bootcards-form>
+ 
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsForm', function () {
   return {
     restrict: 'E',
     transclude: true,
+    replace: true,
     scope: {
       title: '@',
+      schema: '@',
       ngModel: '='
     },
     link: function (scope, element, attrs) {
@@ -110,7 +203,29 @@ angular.module('bootcards').directive('bootcardsCard', function () {
     },
     templateUrl: 'bootcards-form/bootcards-form.html'
   };
-});angular.module('bootcards').directive('bootcardsList', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsList
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-list
+ 	title="List View" 
+ 	ng-model="myListModel"></bootcards-list>
+ 
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsList', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -120,7 +235,29 @@ angular.module('bootcards').directive('bootcardsCard', function () {
     },
     templateUrl: 'bootcards-list/bootcards-list.tmpl.html'
   };
-});angular.module('bootcards').directive('bootcardsMedia', function () {
+});/**
+ * @ngdoc directive
+ * @name bootcards.directive:bootcardsMedia
+ * @element div
+ * @function
+ *
+ * @description
+ * This is the base card directive
+ *
+
+ *
+ * @example
+ <example module="bootcards">
+ <file name="index.html">
+ 
+ <bootcards-media
+ 	title="Media View" 
+ 	ng-model="myListModel"></bootcards-media>
+ 
+ </file>
+ </example>
+ */
+angular.module('bootcards').directive('bootcardsMedia', function () {
   return {
     restrict: 'E',
     transclude: true,
@@ -136,13 +273,14 @@ angular.module('bootcards').directive('bootcardsCard', function () {
 });angular.module('bootcards').directive('bcNavbar', function () {
   return {
     restrict: 'E',
-    transclude: true,
+    replace: true,
     scope: {
       title: '@',
       ngModel: '='
     },
-    link: function (scope, element, attrs) {
+    link: function ($scope, $element, $attrs) {
       console.log('bcNavbar linked');
+      console.log($scope);
     },
     templateUrl: 'bootcards-navbar/bootcards-navbar.html'
   };
@@ -150,6 +288,7 @@ angular.module('bootcards').directive('bootcardsCard', function () {
   return {
     restrict: 'E',
     transclude: true,
+    replace: true,
     scope: {
       title: '@',
       ngModel: '='
@@ -213,7 +352,7 @@ angular.module('bootcards').run(['$templateCache', function($templateCache) {
     "\t<div class=\"panel-heading\">\n" +
     "\t\t<h3 class=\"panel-title\">Chart Card Heading</h3>\n" +
     "\t</div>\n" +
-    "\t<div class=\"bootcards-chart-canvas\"></div>\n" +
+    "\t<div class=\"bootcards-chart-canvas\" id=\"barChart\"></div>\n" +
     "\t<div class=\"panel-footer\">\n" +
     "\t\t<small>Built with Bootcards - Chart Card</small>\n" +
     "\t</div>\n" +

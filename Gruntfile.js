@@ -70,11 +70,14 @@ module.exports = function (grunt) {
 					'<%= yo.app %>/{,*/}*.html',
 					'<%= yo.src %>/{,*/}*.html',
 					'{.tmp,<%= yo.src %>}/{,*/}*.css',
-					'{.tmp,<%= yo.src %>}/{,*/}*.js'
+					'{.tmp,<%= yo.src %>}/{,**/}*.js'
 				],
 				options: {
 					livereload: yoConfig.livereload
-				}
+				},
+				tasks: [	'ngmin:dist',
+					'concat:dist',
+					'uglify:dist']
 			},
 			test: {
 				files: '<%= jshint.test.src %>',
