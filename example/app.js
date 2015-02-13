@@ -90,6 +90,13 @@ app.controller('DocsCtrl', function($scope) {
 		title : 'Angular Bootcards',
 		body : '	AngularJS cards-based UI with dual-pane capability for mobile and desktop, built on top of Angular'
 	};
+	
+	$scope.docs = {
+		menu: [
+		{ title: 'Lists' },
+		{ title: 'Form Cards' }
+		]
+	};
 
 });
 app.controller('MainCtrl', function($scope, $rootScope) {
