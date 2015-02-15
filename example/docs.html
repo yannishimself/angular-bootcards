@@ -1,48 +1,46 @@
+
 <link rel="stylesheet" href="docs.css"/>
-<div class="container">
+
+
+<div class="container" >
 	<div class="row">
 		<div class="col-sm-3 bootcards-list">
-			<div class="docs-menu affix">
-			<ul class="nav nav-pills nav-stacked">
-				<li ng-repeat="item in docs.menu">
-					{{item.title}}
-				</li>
-			</ul>	
+			<div class="docs-menu affix" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+				<ul class="docs-nav nav nav-pills nav-stacked">
+					<li ng-repeat="item in docs.menu">
+						<a data-target="#/docs#{{item.title.replace(' ', '')}}" title="{{item.title}}">{{item.title}}</a>
+					</li>
+				</ul>
 			</div>
-			
-
 		</div>
-		<div class="col-sm-9 bootcards-cards">
+		<div class="col-sm-9 bootcards-cards" >
+			<div ng-repeat="item in docs.menu">
+				<div class="panel panel-default bootcards-richtext">
+					<div class="panel-body">
+						<div class="bs-docs-section">
+							<h2>
+								<a name="{{item.title.replace(' ', '')}}">
+									{{item.title}}
+								</a>
+								</h2>
+							<p class="lead">
+								{{item.body}}
+							</p>
 
-			<div class="panel panel-default bootcards-richtext">
-				<div class="panel-body">
-					<div class="bs-docs-section">
-						<h2>Lists</h2>
-						<p class="lead">
-							THis is the desc
-						</p>
-						<div class="bs-example bs-example-type">
-							<bootcards-list ng-model="myListModel"></bootcards-list>
-						</div>
-						<div class="highlight">
-							<pre>
-								&lt;bootcards-list ng-model=&quot;myListModel&quot;&gt;&lt;/bootcards-list&gt;
-							</pre>
+							<div class="bs-example bs-example-type">
+								<bootcards-list ng-model="myListModel"></bootcards-list>
+							</div>
+							<div class="highlight">
+								<pre class="html hljs xml">
+
+									&lt;bootcards-list ng-model=&quot;myListModel&quot;&gt;&lt;/bootcards-list&gt;
+								</pre>
+							</div>
 						</div>
 					</div>
-
-					<bootcards-file title="File View"></bootcards-file>
-					<bootcards-chart title="Chart View"></bootcards-chart>
-
-					<bootcards-summary title="Summary View"></bootcards-summary>
-
-					<bootcards-form title="Form View"></bootcards-form>
-
-					<bootcards-media title="Media View"></bootcards-media>
-
-					<bootcards-table title="Table View"></bootcards-table>
-
 				</div>
+
+
 			</div>
 		</div>
 

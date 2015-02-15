@@ -1,6 +1,6 @@
 /**
  * angular-bootcards
- * @version v0.0.1 - 2015-02-12
+ * @version v0.0.1 - 2015-02-14
  * @link https://github.com/jonniespratley/angular-bootcards
  * @author Jonnie Spratley <jonniespratley@me.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
