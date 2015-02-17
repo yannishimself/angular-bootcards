@@ -9,11 +9,21 @@ app.config(['$routeProvider',
 			}
 		};
 
-		$routeProvider.when('/', {
+		$routeProvider
+		.when('/', {
 			templateUrl: 'main.html',
 			controller: 'MainCtrl',
 			resolve: routeResolver
-		}).when('/docs', {
+		})
+
+		.when('/example', {
+			templateUrl: 'example.html',
+			controller: 'MainCtrl',
+			resolve: routeResolver
+		})
+
+
+		.when('/docs', {
 			templateUrl: 'docs.html',
 			controller: 'DocsCtrl',
 			resolve: routeResolver
@@ -28,13 +38,11 @@ app.controller('AppCtrl', function ($scope, $rootScope) {
 			title: 'Angular Bootcards',
 			body: '	AngularJS cards-based UI with dual-pane capability for mobile and desktop, built on top of Angular'
 		},
-		nav: [{
-			title: 'Home',
-			href: '#/home'
-		}, {
-			title: 'Docs',
-			href: '#/docs'
-		}],
+		nav: [
+			{title: 'Home', href: '#/home', icon: 'home' },
+			{title: 'Documentation', href: '#/docs', icon: 'book' },
+			{title: 'Example', href: '#/example', icon: 'info' }
+		],
 		sidebar: {
 			nav: [{
 				title: 'Directives',
@@ -65,11 +73,23 @@ app.controller('AppCtrl', function ($scope, $rootScope) {
 	};
 
 	$scope.changeStyle = function (style) {
-
 		var stylesheet = $scope.stylesheets[style];
 		console.log('change styles to ', style);
 		angular.element('#app-styles').attr('href', stylesheet);
+		$scope.initBootcards();
 	};
+
+
+	$scope.initBootcards = function(){
+		bootcards.init({
+			offCanvasHideOnMainClick: true,
+			offCanvasBackdrop: true,
+			enableTabletPortraitMode: true,
+			disableRubberBanding: true,
+			disableBreakoutSelector: 'a.no-break-out'
+		});
+	};
+
 
 	$(document).ready(function () {
 		console.log('document ready');
@@ -79,19 +99,15 @@ app.controller('AppCtrl', function ($scope, $rootScope) {
 		$('[data-spy="scroll"]').each(function () {
 			var $spy = $(this).scrollspy('refresh')
 		});
+		$scope.initBootcards();
 
-		bootcards.init({
-			offCanvasHideOnMainClick: true,
-			offCanvasBackdrop: true,
-			enableTabletPortraitMode: true,
-			disableRubberBanding: true,
-			disableBreakoutSelector: 'a.no-break-out'
-		});
 	});
 
 
 });
-app.controller('DocsCtrl', function ($scope) {
+
+
+app.controller('DocsCtrl', function ($scope, $location, $anchorScroll) {
 	$scope.feature = {
 		title: 'Angular Bootcards',
 		body: '	AngularJS cards-based UI with dual-pane capability for mobile and desktop, built on top of Angular'
@@ -99,19 +115,24 @@ app.controller('DocsCtrl', function ($scope) {
 
 	$scope.docs = {
 		menu: [
-			{title: 'Navbar', body: 'This is the body.'},
-			{title: 'Sidebar', body: 'This is the body.'},
-			{title: 'Footerbar', body: 'This is the body.'},
-			{title: 'Base Card', body: 'This is the body.'},
-			{title: 'List Card', body: 'Basic list view that binds to a ngModel attribute'},
-			{title: 'File Card', body: 'This is the body.'},
-			{title: 'Form Card', body: 'This is the body.'},
-			{title: 'Media Card', body: 'This is the body.'},
-			{title: 'Chart Card', body: 'This is the body.'},
-			{title: 'Summary Card', body: 'This is the body.'},
-			{title: 'Table Card', body: 'This is the body.'}
+			{title: 'Navbar', body: 'The Bootcards Navbar is the main navigation system for desktop browsers.'},
+			{title: 'Sliding Sidebar', body: 'The Sliding Sidebar offers complex apps more space navigation items.'},
+			{title: 'Footerbar', body: 'The Footer Bar offers usable mobile navigation for simpler apps with a few important navigation items.'},
+			{title: 'Base Card', body: 'Base Cards display a list of information separated by dividers.'},
+			{title: 'List Card', body: 'Bootcards Lists are used to navigate the entities in your app (e.g. Contacts, Files, Messages, etc). Basic list view that binds to a ngModel attribute'},
+			{title: 'File Card', body: 'File Cards are intended to show information and functions for non-media file formats (PDFs, Word documents, spreadsheets, etc).'},
+			{title: 'Form Card', body: 'Form Cards are used for user input in your app.'},
+			{title: 'Media Card', body: 'Media Cards hold larger images or videos.'},
+			{title: 'Chart Card', body: 'Chart cards contain charts powered by Morris.js.'},
+			{title: 'Summary Card', body: 'Summary cards can be used on dashboards, etc to highlight important pieces of data in your app.'},
+			{title: 'Table Card', body: 'Table Cards display tabular data.'}
 
 		]
+	};
+
+	$scope.viewDoc = function(target){
+		$location.hash(target);
+		$anchorScroll();
 	};
 
 
@@ -119,34 +140,40 @@ app.controller('DocsCtrl', function ($scope) {
 		//activate highlight.js
 		hljs.initHighlightingOnLoad();
 
-		//Smooth scroll to element
-		$('a').on('click', function(e) {
-			console.log(e);
-			if (
-				location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'')
-				&&
-				location.hostname == this.hostname) {
-				var target = $(this.hash);
-
-				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-				if (target.length) {
-					$('html,body').animate({
-						scrollTop: target.offset().top
-					}, 1000);
-					return false;
-				}
-			}
-		});
-
 
 	});
 
 
 });
+
+
+
+
 app.controller('MainCtrl', function ($scope, $rootScope) {
 	$scope.feature = {
 		title: 'Angular Bootcards',
 		body: '	AngularJS cards-based UI with dual-pane capability for mobile and desktop, built on top of Angular'
 	};
 
+});
+
+/*
+ * Initialize Bootcards.
+ *
+ * Parameters:
+ * - offCanvasBackdrop (boolean): show a backdrop when the offcanvas is shown
+ * - offCanvasHideOnMainClick (boolean): hide the offcanvas menu on clicking outside the off canvas
+ * - enableTabletPortraitMode (boolean): enable single pane mode for tablets in portraitmode
+ * - disableRubberBanding (boolean): disable the iOS rubber banding effect
+ * - disableBreakoutSelector (boolean) : for iOS apps that are added to the home screen:
+ jQuery selector to target links for which a fix should be added to not
+ allow those links to break out of fullscreen mode.
+ */
+angular.element(document).ready(function(){
+	bootcards.init( {
+		offCanvasBackdrop : true,
+		offCanvasHideOnMainClick : true,
+		enableTabletPortraitMode : true,
+		disableRubberBanding : true
+	});
 });

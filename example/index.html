@@ -77,6 +77,7 @@
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css"/>
 
 	<link rel="stylesheet" href="http://bootcards.org/public/bower_components/morris.js/morris.css"/>
+	<link rel="stylesheet" href="css/font-awesome.css"/>
 	<link rel="stylesheet" href="style.css"/>
 
 	<!-- 3rd party libs - Bootstrap and Bootcards JS -->
@@ -103,23 +104,47 @@
 
 
 <ul id="style-switcher">
-	<li>
-		<a href="" class="" data-carousel="#carousel-ios" ng-click="changeStyle('ios')"> <i class="fa fa-apple"></i> iOS
-		</a>
-	</li>
-	<li>
-		<a href="" class="" data-carousel="#carousel-android" ng-click="changeStyle('android')"> <i
-			class="fa fa-android"></i> Android </a>
-	</li>
-	<li><a href="" class="" data-carousel="#carousel-desktop" ng-click="changeStyle('desktop')"> <i
-		class="fa fa-desktop"></i> Desktop </a></li>
+	<li><a href="" class="" data-carousel="#carousel-ios" ng-click="changeStyle('ios')"> <i class="fa fa-apple"></i> iOS</a></li>
+	<li><a href="" class="" data-carousel="#carousel-android" ng-click="changeStyle('android')"> <i class="fa fa-android"></i> Android </a></li>
+	<li><a href="" class="" data-carousel="#carousel-desktop" ng-click="changeStyle('desktop')"> <i class="fa fa-desktop"></i> Desktop </a></li>
 </ul>
 
 
 <bc-navbar ng-model="App"></bc-navbar>
-<bc-sidebar ng-model="App"></bc-sidebar>
-<div class="container" ng-view></div>
-<bc-footerbar ng-model="App"></bc-footerbar>
+<div class="container">
+	<bc-sidebar ng-model="App"></bc-sidebar>
+	<div ng-view></div>
+	<bc-footerbar ng-model="App"></bc-footerbar>
+</div>
+
+<!--recommended: FTLabs FastClick library-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.3/fastclick.min.js"></script>
+
+<script type="text/javascript">
+	/*
+	 * Initialize Bootcards.
+	 *
+	 * Parameters:
+	 * - offCanvasBackdrop (boolean): show a backdrop when the offcanvas is shown
+	 * - offCanvasHideOnMainClick (boolean): hide the offcanvas menu on clicking outside the off canvas
+	 * - enableTabletPortraitMode (boolean): enable single pane mode for tablets in portraitmode
+	 * - disableRubberBanding (boolean): disable the iOS rubber banding effect
+	 * - disableBreakoutSelector (boolean) : for iOS apps that are added to the home screen:
+	 jQuery selector to target links for which a fix should be added to not
+	 allow those links to break out of fullscreen mode.
+	 */
+	bootcards.init( {
+		offCanvasBackdrop : true,
+		offCanvasHideOnMainClick : true,
+		enableTabletPortraitMode : true,
+		disableRubberBanding : true
+	});
+	//enable FastClick
+	window.addEventListener('load', function() {
+		FastClick.attach(document.body);
+	}, false);
+</script>
+
 </body>
 
 </html>

@@ -2,24 +2,28 @@
 <link rel="stylesheet" href="docs.css"/>
 
 
-<div class="container" >
+<div class="container">
 	<div class="row">
-		<div class="col-sm-3 bootcards-list">
+		<div class="col-xs-3 bootcards-list">
 			<div class="docs-menu affix" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
 				<ul class="docs-nav nav nav-pills nav-stacked">
 					<li ng-repeat="item in docs.menu">
-						<a data-target="#/docs#{{item.title.replace(' ', '')}}" title="{{item.title}}">{{item.title}}</a>
+						<a ng-click="viewDoc(item.title)" href="" title="{{item.title}}">{{item.title}}</a>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<div class="col-sm-9 bootcards-cards" >
-			<div ng-repeat="item in docs.menu">
+		<div class="col-xs-9 bootcards-cards">
+
+
+
+
+			<div ng-repeat="item in docs.menu" id="{{item.title}}">
 				<div class="panel panel-default bootcards-richtext">
 					<div class="panel-body">
 						<div class="bs-docs-section">
 							<h2>
-								<a name="{{item.title.replace(' ', '')}}">
+								<a>
 									{{item.title}}
 								</a>
 								</h2>
@@ -30,9 +34,9 @@
 							<div class="bs-example bs-example-type">
 								<bootcards-list ng-model="myListModel"></bootcards-list>
 							</div>
+
 							<div class="highlight">
 								<pre class="html hljs xml">
-
 									&lt;bootcards-list ng-model=&quot;myListModel&quot;&gt;&lt;/bootcards-list&gt;
 								</pre>
 							</div>
