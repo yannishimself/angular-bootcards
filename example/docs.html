@@ -6,16 +6,14 @@
 	<div class="row">
 		<div class="col-xs-3 bootcards-list">
 			<div class="docs-menu affix" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
-				<ul class="docs-nav nav nav-pills nav-stacked">
+				<ul class="docs-nav nav nav-pills nav-stacked navbar-example">
 					<li ng-repeat="item in docs.menu">
-						<a ng-click="viewDoc(item.title)" href="" title="{{item.title}}">{{item.title}}</a>
+						<a ng-click="viewDoc(item.title)" data-target="#{{item.title}}" title="{{item.title}}">{{item.title}}</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 		<div class="col-xs-9 bootcards-cards">
-
-
 
 
 			<div ng-repeat="item in docs.menu" id="{{item.title}}">
@@ -31,13 +29,19 @@
 								{{item.body}}
 							</p>
 
+
 							<div class="bs-example bs-example-type">
-								<bootcards-list ng-model="myListModel"></bootcards-list>
+								
+								<div class="markup">{{item.markup}}</div>
+							</div>
+							<div class="bs-props">
+								{{item.properties | json}}
 							</div>
 
 							<div class="highlight">
-								<pre class="html hljs xml">
-									&lt;bootcards-list ng-model=&quot;myListModel&quot;&gt;&lt;/bootcards-list&gt;
+
+								<pre class="prettyprint linenums">
+									{{item.markup}}
 								</pre>
 							</div>
 						</div>

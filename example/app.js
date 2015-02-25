@@ -1,4 +1,4 @@
-var app = angular.module('exampleApp', ['bootcards', 'ngRoute']);
+var app = angular.module('exampleApp', ['bootcards', 'ngRoute', 'ngSanitize']);
 app.config(['$routeProvider',
 	function ($routeProvider) {
 		var routeResolver = {
@@ -31,8 +31,8 @@ app.config(['$routeProvider',
 			redirectTo: '/'
 		});
 	}]);
-app.controller('AppCtrl', function ($scope, $rootScope) {
-	$rootScope.App = {
+app.controller('AppCtrl', function ($scope, $rootScope, $compile) {
+	window.App = $rootScope.App = {
 		title: 'angular-bootcards.js',
 		feature: {
 			title: 'Angular Bootcards',
@@ -48,6 +48,23 @@ app.controller('AppCtrl', function ($scope, $rootScope) {
 				title: 'Directives',
 				href: ''
 			}]
+		},
+		compileMarkup: function(){
+			$('.markup').each(function(i, o){
+				//compile markup
+				var html = $(this).contents();
+
+				// Step 1: parse HTML into DOM element
+				var template = angular.element(html);
+
+				// Step 2: compile the template
+				var linkFn = $compile(template);
+
+				// Step 3: link the compiled template with the scope.
+				//var element = linkFn(scope);
+				console.log(o, 'compiled');
+			});
+
 		}
 	};
 
@@ -96,18 +113,22 @@ app.controller('AppCtrl', function ($scope, $rootScope) {
 
 		//activate highlight.js
 		hljs.initHighlightingOnLoad();
+
+		$('body').scrollspy({ target: '.navbar-example' })
+
 		$('[data-spy="scroll"]').each(function () {
 			var $spy = $(this).scrollspy('refresh')
 		});
-		$scope.initBootcards();
 
+		$scope.initBootcards();
+		prettyPrint();
 	});
 
 
 });
 
 
-app.controller('DocsCtrl', function ($scope, $location, $anchorScroll) {
+app.controller('DocsCtrl', function ($scope, $location, $anchorScroll, $compile) {
 	$scope.feature = {
 		title: 'Angular Bootcards',
 		body: '	AngularJS cards-based UI with dual-pane capability for mobile and desktop, built on top of Angular'
@@ -121,7 +142,15 @@ app.controller('DocsCtrl', function ($scope, $location, $anchorScroll) {
 			{title: 'Base Card', body: 'Base Cards display a list of information separated by dividers.'},
 			{title: 'List Card', body: 'Bootcards Lists are used to navigate the entities in your app (e.g. Contacts, Files, Messages, etc). Basic list view that binds to a ngModel attribute'},
 			{title: 'File Card', body: 'File Cards are intended to show information and functions for non-media file formats (PDFs, Word documents, spreadsheets, etc).'},
-			{title: 'Form Card', body: 'Form Cards are used for user input in your app.'},
+			{
+				title: 'Form Card',
+				body: 'Form Cards are used for user input in your app.',
+				markup: '<bootcards-form></bootcards-form>',
+				properties: {
+					'ngModel': 'The model for the form data',
+					'formSchema': 'The ng-form schema'
+				}
+			},
 			{title: 'Media Card', body: 'Media Cards hold larger images or videos.'},
 			{title: 'Chart Card', body: 'Chart cards contain charts powered by Morris.js.'},
 			{title: 'Summary Card', body: 'Summary cards can be used on dashboards, etc to highlight important pieces of data in your app.'},
@@ -136,9 +165,13 @@ app.controller('DocsCtrl', function ($scope, $location, $anchorScroll) {
 	};
 
 
+
 	angular.element(document).ready(function(){
+
 		//activate highlight.js
 		hljs.initHighlightingOnLoad();
+
+
 
 
 	});

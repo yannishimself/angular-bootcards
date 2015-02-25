@@ -1,3 +1,6 @@
+body {
+  position: relative;
+}
 ul#style-switcher {
   float: left;
   position: fixed;
