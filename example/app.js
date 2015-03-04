@@ -31,6 +31,19 @@ app.config(['$routeProvider',
 			redirectTo: '/'
 		});
 	}]);
+
+app.directive('dynamic', function ($compile) {
+  return {
+    restrict: 'A',
+    replace: true,
+    link: function (scope, ele, attrs) {
+      scope.$watch(attrs.dynamic, function(html) {
+        ele.html(html);
+        $compile(ele.contents())(scope);
+      });
+    }
+  };
+});
 app.controller('AppCtrl', function ($scope, $rootScope, $compile) {
 	window.App = $rootScope.App = {
 		title: 'angular-bootcards.js',
@@ -128,36 +141,16 @@ app.controller('AppCtrl', function ($scope, $rootScope, $compile) {
 });
 
 
-app.controller('DocsCtrl', function ($scope, $location, $anchorScroll, $compile) {
+app.controller('DocsCtrl', function ($scope, $location, $anchorScroll, $compile, $http) {
 	$scope.feature = {
 		title: 'Angular Bootcards',
 		body: '	AngularJS cards-based UI with dual-pane capability for mobile and desktop, built on top of Angular'
 	};
 
-	$scope.docs = {
-		menu: [
-			{title: 'Navbar', body: 'The Bootcards Navbar is the main navigation system for desktop browsers.'},
-			{title: 'Sliding Sidebar', body: 'The Sliding Sidebar offers complex apps more space navigation items.'},
-			{title: 'Footerbar', body: 'The Footer Bar offers usable mobile navigation for simpler apps with a few important navigation items.'},
-			{title: 'Base Card', body: 'Base Cards display a list of information separated by dividers.'},
-			{title: 'List Card', body: 'Bootcards Lists are used to navigate the entities in your app (e.g. Contacts, Files, Messages, etc). Basic list view that binds to a ngModel attribute'},
-			{title: 'File Card', body: 'File Cards are intended to show information and functions for non-media file formats (PDFs, Word documents, spreadsheets, etc).'},
-			{
-				title: 'Form Card',
-				body: 'Form Cards are used for user input in your app.',
-				markup: '<bootcards-form></bootcards-form>',
-				properties: {
-					'ngModel': 'The model for the form data',
-					'formSchema': 'The ng-form schema'
-				}
-			},
-			{title: 'Media Card', body: 'Media Cards hold larger images or videos.'},
-			{title: 'Chart Card', body: 'Chart cards contain charts powered by Morris.js.'},
-			{title: 'Summary Card', body: 'Summary cards can be used on dashboards, etc to highlight important pieces of data in your app.'},
-			{title: 'Table Card', body: 'Table Cards display tabular data.'}
-
-		]
-	};
+		$scope.docs = {};
+		$http.get('docs.json').success(function(data){
+			$scope.docs = data;
+		});
 
 	$scope.viewDoc = function(target){
 		$location.hash(target);

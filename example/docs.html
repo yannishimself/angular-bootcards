@@ -16,6 +16,8 @@
 		<div class="col-xs-9 bootcards-cards">
 
 
+
+
 			<div ng-repeat="item in docs.menu" id="{{item.title}}">
 				<div class="panel panel-default bootcards-richtext">
 					<div class="panel-body">
@@ -31,19 +33,12 @@
 
 
 							<div class="bs-example bs-example-type">
-								
-								<div class="markup">{{item.markup}}</div>
+								<div class="markup" dynamic="item.markup"></div>
 							</div>
 							<div class="bs-props">
-								{{item.properties | json}}
+								<textarea class="code form-control" ng-model="item.markup"></textarea>
 							</div>
-
-							<div class="highlight">
-
-								<pre class="prettyprint linenums">
-									{{item.markup}}
-								</pre>
-							</div>
+							
 						</div>
 					</div>
 				</div>

@@ -1,0 +1,53 @@
+{
+	"menu": [
+		{
+			"title": "Navbar",
+			"body": "The Bootcards Navbar is the main navigation system for desktop browsers.",
+      "markup": "<bootcards-navbar></bootcards-navbar>"
+		}, {
+			"title": "Sliding Sidebar",
+			"body": "The Sliding Sidebar offers complex apps more space navigation items.",
+      "markup": "<bootcards-sidebar></bootcards-sidebar>"
+		}, {
+			"title": "Footerbar",
+			"body": "The Footer Bar offers usable mobile navigation for simpler apps with a few important navigation items.",
+			"markup": "<bootcards-footerbar></bootcards-footerbar>"
+		}, {
+			"title": "Base Card",
+			"body": "Base Cards display a list of information separated by dividers.",
+			"markup": "<bootcards-card></bootcards-card>"
+		}, {
+			"title": "List Card",
+			"body": "Bootcards Lists are used to navigate the entities in your app (e.g. Contacts, Files, Messages, etc). Basic list view that binds to a ngModel attribute",
+			"markup": "<bootcards-list></bootcards-list>"
+		}, {
+			"title": "File Card",
+			"body": "File Cards are intended to show information and functions for non-media file formats (PDFs, Word documents, spreadsheets, etc).",
+			"markup": "<bootcards-file></bootcards-file>"
+		}, {
+			"title": "Form Card",
+			"body": "Form Cards are used for user input in your app.",
+			"markup": "<bootcards-form></bootcards-form>",
+			"properties": {
+				"ngModel": "The model for the form data",
+				"formSchema": "The ng-form schema"
+			}
+		}, {
+			"title": "Media Card",
+			"body": "Media Cards hold larger images or videos.",
+      "markup": "<bootcards-media></bootcards-media>"
+		}, {
+			"title": "Chart Card",
+			"body": "Chart cards contain charts powered by Morris.js.",
+      "markup": "<bootcards-chart></bootcards-chart>"
+		}, {
+			"title": "Summary Card",
+			"body": "Summary cards can be used on dashboards, etc to highlight important pieces of data in your app.",
+      "markup": "<bootcards-summary></bootcards-summary>"
+		}, {
+			"title": "Table Card",
+			"body": "Table Cards display tabular data.",
+      "markup": "<bootcards-table></bootcards-table>"
+		}
+	]
+}
